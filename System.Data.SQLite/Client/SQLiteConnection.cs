@@ -218,30 +218,23 @@ namespace System.Data.SQLite
 								db_file = tvalue.Substring(7);
 							}
 							else if(tvalue_lc.StartsWith("file:"))
-								{
-									db_file = tvalue.Substring(5);
-								}
-								else if(tvalue_lc.StartsWith("/"))
-									{
-										db_file = tvalue;
+							{
+								db_file = tvalue.Substring(5);
+							}
+							else if(tvalue_lc.StartsWith("/"))
+							{
+								db_file = tvalue;
 #if !(SQLITE_SILVERLIGHT || WINDOWS_MOBILE)
-									}
-									else if(tvalue_lc.StartsWith("|DataDirectory|", StringComparison.InvariantCultureIgnoreCase))
-										{
-											AppDomainSetup ads = AppDomain.CurrentDomain.SetupInformation;
-											string filePath = String.Format("App_Data{0}{1}", Path.DirectorySeparatorChar, tvalue_lc.Substring(15));
-
-											db_file = Path.Combine(ads.ApplicationBase, filePath);
+							}
+							else if(tvalue_lc.StartsWith("|DataDirectory|", StringComparison.InvariantCultureIgnoreCase))
+							{
+								AppDomainSetup ads = AppDomain.CurrentDomain.SetupInformation;
+								string filePath = String.Format("App_Data{0}{1}", Path.DirectorySeparatorChar, tvalue_lc.Substring(15));
+								db_file = Path.Combine(ads.ApplicationBase, filePath);
 #endif
-										}
-										else
-										{
-											//#if !WINDOWS_PHONE
-											//                                throw new InvalidOperationException ("Invalid connection string: invalid URI");
-											//#else
-											db_file = tvalue;
-											//#endif
-										}
+							}
+							else
+								db_file = tvalue;
 							break;
 
 						case "mode":
