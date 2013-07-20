@@ -1,0 +1,6 @@
+Name: System.Data.SQLite.Tests
+Description: System.Data.SQLite.Tests
+Version: 0.1
+
+Requires: 
+Libs: -r:@expanded_libdir@/@PACKAGE@/System.Data.SQLite.Tests.dll

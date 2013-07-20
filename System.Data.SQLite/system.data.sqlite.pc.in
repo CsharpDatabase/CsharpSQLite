@@ -1,0 +1,6 @@
+Name: System.Data.SQLite
+Description: System.Data.SQLite
+Version: 0.1
+
+Requires: 
+Libs: -r:@expanded_libdir@/@PACKAGE@/System.Data.SQLite.dll
