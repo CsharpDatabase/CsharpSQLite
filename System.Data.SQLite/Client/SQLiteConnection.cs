@@ -389,14 +389,11 @@ namespace System.Data.SQLite
 		public override void Open()
 		{
 			if(conn_str == null)
-			{
 				throw new InvalidOperationException("No database specified");
-			}
 
 			if(state != ConnectionState.Closed)
-			{
-				return;
-			}
+				throw new InvalidOperationException("Connection state is not closed.");
+
 			if(Version == 3)
 			{
 				sqlite_handle = (IntPtr)1;
