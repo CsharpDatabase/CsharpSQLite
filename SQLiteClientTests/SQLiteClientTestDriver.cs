@@ -1116,7 +1116,7 @@ namespace SQLiteClientTests
 					tests.Issue_124();
 					break;
 				case 149:
-					//tests.Issue_149(); // Error
+					tests.Issue_149();
 					break;
 			}
 
@@ -1128,12 +1128,12 @@ namespace SQLiteClientTests
 			tests.Test6();
 			tests.Test7();*/
 			//tests.Test8();
-			//tests.Issue_65();
-			/*tests.Issue_76();
+			/*tests.Issue_65();
+			tests.Issue_76();
 			tests.Issue_86();
 			tests.Issue_119();
-			tests.Issue_124();*/
-			//tests.Issue_149();
+			tests.Issue_124();
+			tests.Issue_149();*/
 
 			Console.WriteLine("Press Enter to Continue");
 			Console.ReadKey();

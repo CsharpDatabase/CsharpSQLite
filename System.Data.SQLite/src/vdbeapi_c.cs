@@ -205,7 +205,8 @@ return ( p == null || p.expired ) ? 1 : 0;
 				}
 				p.flags = (u16)(p.flags & ~MEM_Str);
 				p.flags |= MEM_Blob;
-				return p.n > 0 ? p.zBLOB : null;
+				//return p.n > 0 ? p.zBLOB : null;
+				return p.zBLOB;
 			}
 			else
 			{
