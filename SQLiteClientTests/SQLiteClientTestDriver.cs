@@ -749,6 +749,8 @@ namespace SQLiteClientTests
 					conn.Dispose();
 				}
 			}
+
+			Console.WriteLine("Issue_65 Done.");
 		}
 		// Issue 76 Encryption is not implemented in C#SQLite client connection and command objects 
 		public void Issue_76()
@@ -1061,9 +1063,17 @@ namespace SQLiteClientTests
 
 		public static int Main(string[] args)
 		{
-			SQLiteClientTestDriver tests = new SQLiteClientTestDriver();
-
 			int Test = 1;
+			var tests = new SQLiteClientTestDriver();
+
+			if(args.Length > 0)
+			{
+				double number;
+
+				if(double.TryParse(args[0], out number))
+					Test = Convert.ToInt32(number);
+			}
+
 			switch(Test)
 			{
 				case 1:
@@ -1091,7 +1101,7 @@ namespace SQLiteClientTests
 					//tests.Test8(); // Error
 					break;
 				case 65:
-					//tests.Issue_65(); // Error
+					tests.Issue_65();
 					break;
 				case 76:
 					tests.Issue_76();
