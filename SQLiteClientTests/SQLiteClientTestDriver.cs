@@ -1098,7 +1098,7 @@ namespace SQLiteClientTests
 					tests.Test7();
 					break;
 				case 8:
-					//tests.Test8(); // Error
+					//tests.Test8(); // Not Implemented
 					break;
 				case 65:
 					tests.Issue_65();
