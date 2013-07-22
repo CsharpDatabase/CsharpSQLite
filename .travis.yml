@@ -1,0 +1,24 @@
+#
+# CsharpDatabase Hook
+#
+
+# Travis language: c(sharp)
+language: c
+
+# Mono
+install:
+ - sudo apt-get install mono-devel mono-dmcs nunit
+
+script:
+ - ./test.sh
+
+# Only watch the master branch
+branches:
+  only:
+    - master
+
+# Notify if needed
+notifications:
+  irc:
+    channels:
+      - "irc.rizon.net#schumix2"
