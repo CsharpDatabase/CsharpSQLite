@@ -46,6 +46,7 @@ fi
 
 
 dnl package checks, common for all configs
+PKG_CHECK_MODULES([NUNIT], [nunit])
 
 dnl package checks, per config
 
@@ -53,10 +54,15 @@ dnl package checks, per config
 AC_CONFIG_FILES([
 System.Data.SQLite/system.data.sqlite.pc
 System.Data.SQLite/Makefile
-System.Data.SQLite.Tests/system.data.sqlite.tests.pc
-System.Data.SQLite.Tests/Makefile
-SQLiteClientTests/sqliteclienttests
-SQLiteClientTests/Makefile
+Tests/SQLiteClientTests/sqliteclienttests
+Tests/SQLiteClientTests/Makefile
+Tests/System.Data.SQLite.Tests/system.data.sqlite.tests.pc
+Tests/System.Data.SQLite.Tests/Makefile
+Tests/System.Data.SQLite.UnitTests/system.data.sqlite.unittests.pc
+Tests/System.Data.SQLite.UnitTests/Makefile
+Tests/Makefile
+System.Data.SQLite.Benchmark/system.data.sqlite.benchmark
+System.Data.SQLite.Benchmark/Makefile
 Makefile
 
 ])

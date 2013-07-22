@@ -5,34 +5,34 @@ EXTRA_DIST =
 
 if ENABLE_DEBUG
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize- "-nowarn:0168;0169;0414;0618;0649" -debug "-define:DEBUG" "-main:SQLiteClientTests.SQLiteClientTestDriver"
-ASSEMBLY = ../../Run/Tests/Debug/SQLiteClientTests.exe
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- "-nowarn:0168;0414;0219" -debug "-define:DEBUG" "-main:Benchmark"
+ASSEMBLY = ../Run/Debug/Benchmark.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Debug/System.Data.SQLite.dll
-BUILD_DIR = ../../Run/Tests/Debug
+	../Run/Debug/System.Data.SQLite.dll
+BUILD_DIR = ../Run/Debug/
 
-SQLITECLIENTTESTS_EXE_MDB_SOURCE=../../Run/Tests/Debug/SQLiteClientTests.exe.mdb
-SQLITECLIENTTESTS_EXE_MDB=$(BUILD_DIR)/SQLiteClientTests.exe.mdb
-SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Run/Debug/System.Data.SQLite.dll
-SYSTEM_DATA_SQLITE_DLL_MDB_SOURCE=../../Run/Debug/System.Data.SQLite.dll.mdb
+BENCHMARK_EXE_MDB_SOURCE=../Run/Debug/Benchmark.exe.mdb
+BENCHMARK_EXE_MDB=$(BUILD_DIR)/Benchmark.exe.mdb
+SYSTEM_DATA_SQLITE_DLL_SOURCE=../Run/Debug/System.Data.SQLite.dll
+SYSTEM_DATA_SQLITE_DLL_MDB_SOURCE=../Run/Debug/System.Data.SQLite.dll.mdb
 SYSTEM_DATA_SQLITE_DLL_MDB=$(BUILD_DIR)/System.Data.SQLite.dll.mdb
 
 endif
 
 if ENABLE_RELEASE
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize+ "-nowarn:0168;0169;0414;0618;0649" "-define:RELEASE" "-main:SQLiteClientTests.SQLiteClientTestDriver"
-ASSEMBLY = ../../Run/Tests/Release/SQLiteClientTests.exe
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-nowarn:0168;0414;0219" "-define:RELEASE" "-main:Benchmark"
+ASSEMBLY = ../Run/Release/Benchmark.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Release/System.Data.SQLite.dll
-BUILD_DIR = ../../Run/Tests/Release
+	../Run/Release/System.Data.SQLite.dll
+BUILD_DIR = ../Run/Release/
 
-SQLITECLIENTTESTS_EXE_MDB=
-SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Run/Release/System.Data.SQLite.dll
+BENCHMARK_EXE_MDB=
+SYSTEM_DATA_SQLITE_DLL_SOURCE=../Run/Release/System.Data.SQLite.dll
 SYSTEM_DATA_SQLITE_DLL_MDB=
 
 endif
@@ -41,12 +41,12 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(SQLITECLIENTTESTS_EXE_MDB) \
+	$(BENCHMARK_EXE_MDB) \
 	$(SYSTEM_DATA_SQLITE_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL_MDB)  
 
 BINARIES = \
-	$(SQLITECLIENTTESTS)  
+	$(SYSTEM_DATA_SQLITE_BENCHMARK)  
 
 
 RESGEN=resgen2
@@ -54,15 +54,17 @@ RESGEN=resgen2
 all: $(ASSEMBLY) $(PROGRAMFILES) $(BINARIES) 
 
 FILES = \
+	Classes/SQLiteDatabase.cs \
+	Classes/SQLiteVdbe.cs \
 	Properties/AssemblyInfo.cs \
-	SQLiteClientTestDriver.cs 
+	src/Benchmark.cs 
 
 DATA_FILES = 
 
 RESOURCES = 
 
 EXTRAS = \
-	sqliteclienttests.in 
+	system.data.sqlite.benchmark.in 
 
 REFERENCES =  \
 	System \
@@ -78,11 +80,9 @@ CLEANFILES = $(PROGRAMFILES) $(BINARIES)
 include $(top_srcdir)/Makefile.include
 
 SYSTEM_DATA_SQLITE_DLL = $(BUILD_DIR)/System.Data.SQLite.dll
-SQLITECLIENTTESTS = $(BUILD_DIR)/sqliteclienttests
+SYSTEM_DATA_SQLITE_BENCHMARK = $(BUILD_DIR)/system.data.sqlite.benchmark
 
-$(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL))
-$(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL_MDB))
-$(eval $(call emit-deploy-wrapper,SQLITECLIENTTESTS,sqliteclienttests,x))
+$(eval $(call emit-deploy-wrapper,SYSTEM_DATA_SQLITE_BENCHMARK,system.data.sqlite.benchmark,x))
 
 
 $(eval $(call emit_resgen_targets))

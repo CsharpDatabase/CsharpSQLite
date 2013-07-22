@@ -6,22 +6,21 @@ EXTRA_DIST =
 if ENABLE_DEBUG
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- -debug "-define:DEBUG"
-ASSEMBLY = ../Run/Debug/System.Data.SQLite.Tests.dll
+ASSEMBLY = ../../Run/Tests/Debug/System.Data.SQLite.Tests.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
-	../Run/Debug/System.Data.SQLite.dll
-BUILD_DIR = ../Run/Debug
+	../../Run/Debug/System.Data.SQLite.dll
+BUILD_DIR = ../../Run/Tests/Debug
 
-SYSTEM_DATA_SQLITE_TESTS_DLL_MDB_SOURCE=../Run/Debug/System.Data.SQLite.Tests.dll.mdb
+SYSTEM_DATA_SQLITE_TESTS_DLL_MDB_SOURCE=../../Run/Tests/Debug/System.Data.SQLite.Tests.dll.mdb
 SYSTEM_DATA_SQLITE_TESTS_DLL_MDB=$(BUILD_DIR)/System.Data.SQLite.Tests.dll.mdb
 PEOPLE_SQL_SOURCE=Sql/People.sql
 SHIRTS_SQL_SOURCE=Sql/Shirts.sql
 NORTHWIND_SQL_SOURCE=Sql/Northwind.sql
 SYSTEM_DATA_SQLITE_TESTS_DLL_CONFIG_SOURCE=App.config
-NUNIT_FRAMEWORK_DLL_SOURCE=../Dependencies/nunit.framework.dll
-SYSTEM_DATA_SQLITE_DLL_SOURCE=../Run/Debug/System.Data.SQLite.dll
-SYSTEM_DATA_SQLITE_DLL_MDB_SOURCE=../Run/Debug/System.Data.SQLite.dll.mdb
+SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Run/Debug/System.Data.SQLite.dll
+SYSTEM_DATA_SQLITE_DLL_MDB_SOURCE=../../Run/Debug/System.Data.SQLite.dll.mdb
 SYSTEM_DATA_SQLITE_DLL_MDB=$(BUILD_DIR)/System.Data.SQLite.dll.mdb
 
 endif
@@ -29,20 +28,19 @@ endif
 if ENABLE_RELEASE
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- "-define:RELEASE"
-ASSEMBLY = ../Run/Release/System.Data.SQLite.Tests.dll
+ASSEMBLY = ../../Run/Tests/Release/System.Data.SQLite.Tests.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
-	../Run/Release/System.Data.SQLite.dll
-BUILD_DIR = ../Run/Release
+	../../Run/Release/System.Data.SQLite.dll
+BUILD_DIR = ../../Run/Tests/Release
 
 SYSTEM_DATA_SQLITE_TESTS_DLL_MDB=
 PEOPLE_SQL_SOURCE=Sql/People.sql
 SHIRTS_SQL_SOURCE=Sql/Shirts.sql
 NORTHWIND_SQL_SOURCE=Sql/Northwind.sql
 SYSTEM_DATA_SQLITE_TESTS_DLL_CONFIG_SOURCE=App.config
-NUNIT_FRAMEWORK_DLL_SOURCE=../Dependencies/nunit.framework.dll
-SYSTEM_DATA_SQLITE_DLL_SOURCE=../Run/Release/System.Data.SQLite.dll
+SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Run/Release/System.Data.SQLite.dll
 SYSTEM_DATA_SQLITE_DLL_MDB=
 
 endif
@@ -53,7 +51,6 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 PROGRAMFILES = \
 	$(SYSTEM_DATA_SQLITE_TESTS_DLL_MDB) \
 	$(SYSTEM_DATA_SQLITE_TESTS_DLL_CONFIG) \
-	$(NUNIT_FRAMEWORK_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL_MDB)  
 
@@ -103,10 +100,10 @@ REFERENCES =  \
 	System.Xml \
 	System.Core \
 	System.Data \
-	System.Data.Linq
+	System.Data.Linq \
+	$(NUNIT_LIBS)
 
-DLL_REFERENCES =  \
-	../Dependencies/nunit.framework.dll
+DLL_REFERENCES = 
 
 CLEANFILES = $(PROGRAMFILES) $(PROGRAMFILES_SQL) $(LINUX_PKGCONFIG) 
 
@@ -116,7 +113,6 @@ PEOPLE_SQL = $(BUILD_DIR)/Sql/People.sql
 SHIRTS_SQL = $(BUILD_DIR)/Sql/Shirts.sql
 NORTHWIND_SQL = $(BUILD_DIR)/Sql/Northwind.sql
 SYSTEM_DATA_SQLITE_TESTS_DLL_CONFIG = $(BUILD_DIR)/System.Data.SQLite.Tests.dll.config
-NUNIT_FRAMEWORK_DLL = $(BUILD_DIR)/nunit.framework.dll
 SYSTEM_DATA_SQLITE_DLL = $(BUILD_DIR)/System.Data.SQLite.dll
 SYSTEM_DATA_SQLITE_TESTS_PC = $(BUILD_DIR)/system.data.sqlite.tests.pc
 
@@ -124,7 +120,8 @@ $(eval $(call emit-deploy-target,PEOPLE_SQL))
 $(eval $(call emit-deploy-target,SHIRTS_SQL))
 $(eval $(call emit-deploy-target,NORTHWIND_SQL))
 $(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_TESTS_DLL_CONFIG))
-$(eval $(call emit-deploy-target,NUNIT_FRAMEWORK_DLL))
+$(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL))
+$(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL_MDB))
 $(eval $(call emit-deploy-wrapper,SYSTEM_DATA_SQLITE_TESTS_PC,system.data.sqlite.tests.pc))
 
 

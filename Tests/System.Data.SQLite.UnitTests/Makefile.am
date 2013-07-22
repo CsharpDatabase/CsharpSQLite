@@ -5,16 +5,17 @@ EXTRA_DIST =
 
 if ENABLE_DEBUG
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize- "-nowarn:0168;0169;0414;0618;0649" -debug "-define:DEBUG" "-main:SQLiteClientTests.SQLiteClientTestDriver"
-ASSEMBLY = ../../Run/Tests/Debug/SQLiteClientTests.exe
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- "-nowarn:0219" -debug "-define:TRACE;DEBUG"
+ASSEMBLY = ../../Run/Tests/Debug/System.Data.SQLite.UnitTests.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
-COMPILE_TARGET = exe
+COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
 	../../Run/Debug/System.Data.SQLite.dll
-BUILD_DIR = ../../Run/Tests/Debug
+BUILD_DIR = ../../Run/Tests/Debug/
 
-SQLITECLIENTTESTS_EXE_MDB_SOURCE=../../Run/Tests/Debug/SQLiteClientTests.exe.mdb
-SQLITECLIENTTESTS_EXE_MDB=$(BUILD_DIR)/SQLiteClientTests.exe.mdb
+SYSTEM_DATA_SQLITE_UNITTESTS_DLL_MDB_SOURCE=../../Run/Tests/Debug/System.Data.SQLite.UnitTests.dll.mdb
+SYSTEM_DATA_SQLITE_UNITTESTS_DLL_MDB=$(BUILD_DIR)/System.Data.SQLite.UnitTests.dll.mdb
+XUNIT_DLL_SOURCE=../../Dependencies/xUnit/xunit.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Run/Debug/System.Data.SQLite.dll
 SYSTEM_DATA_SQLITE_DLL_MDB_SOURCE=../../Run/Debug/System.Data.SQLite.dll.mdb
 SYSTEM_DATA_SQLITE_DLL_MDB=$(BUILD_DIR)/System.Data.SQLite.dll.mdb
@@ -23,15 +24,16 @@ endif
 
 if ENABLE_RELEASE
 ASSEMBLY_COMPILER_COMMAND = dmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -unsafe -warn:4 -optimize+ "-nowarn:0168;0169;0414;0618;0649" "-define:RELEASE" "-main:SQLiteClientTests.SQLiteClientTestDriver"
-ASSEMBLY = ../../Run/Tests/Release/SQLiteClientTests.exe
+ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-nowarn:0219" "-define:TRACE"
+ASSEMBLY = ../../Run/Tests/Release/System.Data.SQLite.UnitTests.dll
 ASSEMBLY_MDB = 
-COMPILE_TARGET = exe
+COMPILE_TARGET = library
 PROJECT_REFERENCES =  \
 	../../Run/Release/System.Data.SQLite.dll
-BUILD_DIR = ../../Run/Tests/Release
+BUILD_DIR = ../../Run/Tests/Release/
 
-SQLITECLIENTTESTS_EXE_MDB=
+SYSTEM_DATA_SQLITE_UNITTESTS_DLL_MDB=
+XUNIT_DLL_SOURCE=../../Dependencies/xUnit/xunit.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Run/Release/System.Data.SQLite.dll
 SYSTEM_DATA_SQLITE_DLL_MDB=
 
@@ -41,48 +43,55 @@ AL=al
 SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 
 PROGRAMFILES = \
-	$(SQLITECLIENTTESTS_EXE_MDB) \
+	$(SYSTEM_DATA_SQLITE_UNITTESTS_DLL_MDB) \
+	$(XUNIT_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL_MDB)  
 
-BINARIES = \
-	$(SQLITECLIENTTESTS)  
+LINUX_PKGCONFIG = \
+	$(SYSTEM_DATA_SQLITE_UNITTESTS_PC)  
 
 
 RESGEN=resgen2
 	
-all: $(ASSEMBLY) $(PROGRAMFILES) $(BINARIES) 
+all: $(ASSEMBLY) $(PROGRAMFILES) $(LINUX_PKGCONFIG) 
 
 FILES = \
 	Properties/AssemblyInfo.cs \
-	SQLiteClientTestDriver.cs 
+	Stress.cs \
+	../../System.Data.SQLite.Benchmark/Classes/SQLiteDatabase.cs \
+	../../System.Data.SQLite.Benchmark/Classes/SQLiteVdbe.cs 
 
 DATA_FILES = 
 
 RESOURCES = 
 
 EXTRAS = \
-	sqliteclienttests.in 
+	Classes \
+	system.data.sqlite.unittests.pc.in 
 
 REFERENCES =  \
 	System \
-	System.Core \
 	System.Data \
 	System.Management \
-	System.Xml
+	System.Xml \
+	System.Core
 
-DLL_REFERENCES = 
+DLL_REFERENCES =  \
+	../../Dependencies/xUnit/xunit.dll
 
-CLEANFILES = $(PROGRAMFILES) $(BINARIES) 
+CLEANFILES = $(PROGRAMFILES) $(LINUX_PKGCONFIG) 
 
 include $(top_srcdir)/Makefile.include
 
+XUNIT_DLL = $(BUILD_DIR)/xunit.dll
 SYSTEM_DATA_SQLITE_DLL = $(BUILD_DIR)/System.Data.SQLite.dll
-SQLITECLIENTTESTS = $(BUILD_DIR)/sqliteclienttests
+SYSTEM_DATA_SQLITE_UNITTESTS_PC = $(BUILD_DIR)/system.data.sqlite.unittests.pc
 
+$(eval $(call emit-deploy-target,XUNIT_DLL))
 $(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL))
 $(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL_MDB))
-$(eval $(call emit-deploy-wrapper,SQLITECLIENTTESTS,sqliteclienttests,x))
+$(eval $(call emit-deploy-wrapper,SYSTEM_DATA_SQLITE_UNITTESTS_PC,system.data.sqlite.unittests.pc))
 
 
 $(eval $(call emit_resgen_targets))
