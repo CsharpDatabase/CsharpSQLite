@@ -8,6 +8,12 @@
 *.mdb
 */bin/*
 Run/
+
+# build stuff
+msbuild.log
+xbuild.log
+
+# Test
 test-results
 
 # ignore thumbnails created by windows

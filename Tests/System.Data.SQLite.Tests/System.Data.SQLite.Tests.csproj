@@ -36,7 +36,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="nunit.framework">
-      <HintPath>..\Dependencies\nunit.framework.dll</HintPath>
+      <HintPath>..\..\Dependencies\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
