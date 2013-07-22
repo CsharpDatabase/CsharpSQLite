@@ -6,7 +6,7 @@ using System.Data.SQLite;
 
 namespace System.Data.SQLite.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class GroupAggregateFixture
 	{
 		// TODO: SQLite allows non-aggregates in the select with group by

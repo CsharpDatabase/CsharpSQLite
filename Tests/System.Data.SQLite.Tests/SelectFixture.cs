@@ -6,7 +6,7 @@ using System.Data.SQLite;
 
 namespace System.Data.SQLite.Tests
 {
-	[TestFixture()]
+	[TestFixture]
 	public class SelectFixture
 	{
 		[Test]
