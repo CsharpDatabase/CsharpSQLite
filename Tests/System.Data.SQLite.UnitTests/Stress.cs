@@ -2,6 +2,7 @@ using System.IO;
 using System.Diagnostics;
 using Xunit;
 using System.Data.SQLite;
+using System.Data.SQLite.Benchmark;
 
 namespace Community.CsharpSQLite.UnitTests
 {
