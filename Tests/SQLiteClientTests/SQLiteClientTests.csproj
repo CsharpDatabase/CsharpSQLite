@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Run\Debug\</OutputPath>
+    <OutputPath>..\..\Run\Tests\Debug</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>..\Run\Release\</OutputPath>
+    <OutputPath>..\..\Run\Tests\Release</OutputPath>
     <DefineConstants>RELEASE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -74,7 +74,7 @@
   </Target>
   -->
   <ItemGroup>
-    <ProjectReference Include="..\System.Data.SQLite\System.Data.SQLite.csproj">
+    <ProjectReference Include="..\..\System.Data.SQLite\System.Data.SQLite.csproj">
       <Project>{F1653F20-D47D-4F29-8C55-3C835542AF5F}</Project>
       <Name>System.Data.SQLite</Name>
     </ProjectReference>

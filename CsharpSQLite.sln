@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteClientTests", "SQLiteClientTests\SQLiteClientTests.csproj", "{B83741E9-7012-491E-B15D-3B083506A143}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Data.SQLite", "System.Data.SQLite\System.Data.SQLite.csproj", "{F1653F20-D47D-4F29-8C55-3C835542AF5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Data.SQLite.Tests", "System.Data.SQLite.Tests\System.Data.SQLite.Tests.csproj", "{F3C729A0-E4B1-493B-8F9B-8DDE1A5092AD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5DE3C678-AF97-4E2D-A831-D8B1F782993D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteClientTests", "Tests\SQLiteClientTests\SQLiteClientTests.csproj", "{B83741E9-7012-491E-B15D-3B083506A143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Data.SQLite.Tests", "Tests\System.Data.SQLite.Tests\System.Data.SQLite.Tests.csproj", "{F3C729A0-E4B1-493B-8F9B-8DDE1A5092AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Data.SQLite.UnitTests", "Tests\System.Data.SQLite.UnitTests\System.Data.SQLite.UnitTests.csproj", "{59E27BF3-3D31-42E5-BA21-FAEE135E699F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Data.SQLite.Benchmark", "System.Data.SQLite.Benchmark\System.Data.SQLite.Benchmark.csproj", "{206175B1-9C0B-40D7-8859-09B6F3A6B1B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +19,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{206175B1-9C0B-40D7-8859-09B6F3A6B1B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206175B1-9C0B-40D7-8859-09B6F3A6B1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206175B1-9C0B-40D7-8859-09B6F3A6B1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206175B1-9C0B-40D7-8859-09B6F3A6B1B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E27BF3-3D31-42E5-BA21-FAEE135E699F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E27BF3-3D31-42E5-BA21-FAEE135E699F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E27BF3-3D31-42E5-BA21-FAEE135E699F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E27BF3-3D31-42E5-BA21-FAEE135E699F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B83741E9-7012-491E-B15D-3B083506A143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B83741E9-7012-491E-B15D-3B083506A143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B83741E9-7012-491E-B15D-3B083506A143}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,8 +40,13 @@ Global
 		{F3C729A0-E4B1-493B-8F9B-8DDE1A5092AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3C729A0-E4B1-493B-8F9B-8DDE1A5092AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B83741E9-7012-491E-B15D-3B083506A143} = {5DE3C678-AF97-4E2D-A831-D8B1F782993D}
+		{F3C729A0-E4B1-493B-8F9B-8DDE1A5092AD} = {5DE3C678-AF97-4E2D-A831-D8B1F782993D}
+		{59E27BF3-3D31-42E5-BA21-FAEE135E699F} = {5DE3C678-AF97-4E2D-A831-D8B1F782993D}
+	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TestDriver\SQLiteClientTests.csproj
+		StartupItem = Tests\SQLiteClientTests\SQLiteClientTests.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.inheritsSet = null
