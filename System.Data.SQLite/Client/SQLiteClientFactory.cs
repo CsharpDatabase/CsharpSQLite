@@ -32,22 +32,13 @@ using System.Data.Common;
 
 namespace System.Data.SQLite
 {
-	public partial class SQLiteClientFactory : DbProviderFactory//, IServiceProvider
+	public partial class SQLiteClientFactory : DbProviderFactory
 	{
-		public static readonly SQLiteClientFactory Instance = null;
-		public static object lockStatic = new object();
+		public static readonly SQLiteClientFactory Instance = new SQLiteClientFactory();
+		//public static object lockStatic = new object();
 
 		private SQLiteClientFactory()
 		{
-		}
-
-		static SQLiteClientFactory()
-		{
-			lock(lockStatic)
-			{
-				if(Instance == null)
-					Instance = new SQLiteClientFactory();
-			}
 		}
 
 		public override bool CanCreateDataSourceEnumerator

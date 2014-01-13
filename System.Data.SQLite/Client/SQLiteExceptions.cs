@@ -26,53 +26,53 @@ namespace System.Data.SQLite
 		}
 	}
 	// This exception is raised whenever a statement cannot be compiled.
-	public class SqliteSyntaxException : SQLiteException
+	public class SQLiteSyntaxException : SQLiteException
 	{
-		public SqliteSyntaxException(int errcode)
+		public SQLiteSyntaxException(int errcode)
             : base(errcode)
 		{
 
 		}
 
-		public SqliteSyntaxException(int errcode, string message)
+		public SQLiteSyntaxException(int errcode, string message)
             : base(errcode, message)
 		{
 		}
 
-		public SqliteSyntaxException(string message)
+		public SQLiteSyntaxException(string message)
             : base(message)
 		{
 		}
 	}
 	// This exception is raised whenever the execution
 	// of a statement fails.
-	public class SqliteExecutionException : SQLiteException
+	public class SQLiteExecutionException : SQLiteException
 	{
-		public SqliteExecutionException()
+		public SQLiteExecutionException()
             : base(0)
 		{
 		}
 
-		public SqliteExecutionException(int errcode)
+		public SQLiteExecutionException(int errcode)
             : base(errcode)
 		{
 		}
 
-		public SqliteExecutionException(int errcode, string message)
+		public SQLiteExecutionException(int errcode, string message)
             : base(errcode, message)
 		{
 		}
 
-		public SqliteExecutionException(string message)
+		public SQLiteExecutionException(string message)
             : base(message)
 		{
 		}
 	}
 	// This exception is raised whenever Sqlite says it
 	// cannot run a command because something is busy.
-	public class SqliteBusyException : SQLiteException
+	public class SQLiteBusyException : SQLiteException
 	{
-		public SqliteBusyException()
+		public SQLiteBusyException()
             : base(0)
 		{
 		}

@@ -372,6 +372,7 @@ namespace System.Data.SQLite
 			//else 
 			//Sqlite.sqlite_close (sqlite_handle);
 			sqlite_handle = IntPtr.Zero;
+			this.OnStateChange(new StateChangeEventArgs(ConnectionState.Open, ConnectionState.Closed));
 		}
 
 		public override void ChangeDatabase(string databaseName)
@@ -412,6 +413,7 @@ namespace System.Data.SQLite
 				}
 			}
 			state = ConnectionState.Open;
+			this.OnStateChange(new StateChangeEventArgs(ConnectionState.Closed, ConnectionState.Open));
 		}
 		#if !SQLITE_SILVERLIGHT
 		public override DataTable GetSchema(String collectionName)
