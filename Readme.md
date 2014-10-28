@@ -1,1 +1,1 @@
-# CsharpSQLite [![Build Status](https://travis-ci.org/CsharpDatabase/CsharpSQLite.png?branch=master)](https://travis-ci.org/CsharpDatabase/CsharpSQLite) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/CsharpDatabase/csharpsqlite/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# CsharpSQLite [![Build Status](https://travis-ci.org/CsharpDatabase/CsharpSQLite.svg?branch=master)](https://travis-ci.org/CsharpDatabase/CsharpSQLite) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/CsharpDatabase/csharpsqlite/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
